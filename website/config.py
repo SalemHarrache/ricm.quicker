@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+'''
+    :copyright: Copyright 2013 Salem Harrache.
+    :license: BSD, see LICENSE for details.
+
+'''
 import uuid
 
 

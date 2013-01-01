@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+'''
+    :copyright: Copyright 2013 Salem Harrache.
+    :license: BSD, see LICENSE for details.
+
+'''
 from __future__ import unicode_literals
 import re
 import uuid

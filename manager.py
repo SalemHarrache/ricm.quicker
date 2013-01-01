@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+'''
+    :copyright: Copyright 2012 Salem Harrache.
+    :license: BSD, see LICENSE for details.
+
+'''
 from gevent import monkey
 
 monkey.patch_all()

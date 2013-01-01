@@ -1,0 +1,16 @@
+{% extends "_layout.jinja2" %}
+
+{% block title %}Sitemap{% endblock title %}
+
+{% block content %}
+<h2>{{ config.UNIVERSITY }}</h2>
+{% for year in years %}
+<h3>{{ year.name.upper() }}</h3>
+<p>
+{% for group in year.groups %}
+<a style="display: inline-block;padding: 10px;" href="{{ url_for('.index', group_name=group.name, year=year.name) }}" title="{{ group.name.upper() }}">{{ group.name }}</a>
+{% endfor %}
+</p>
+{% endfor %}
+{% endblock content %}
+

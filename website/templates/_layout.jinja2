@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Emploi du temps rapide Polytech'Grenoble - {{ self.title() }}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="author" content="Salem Harrache" />
+  <meta content="Emploi du temps rapide {{ config.UNIVERSITY }} - {{ self.title() }}" name="description" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css" />
+  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+{% block header %}{% endblock header %}
+</head>
+<body>
+{% set messages_title = {
+  "error": "Erreur",
+  "info": "Information"} %}
+
+{% for category, msgs in get_flashed_messages(with_categories=true) | sort(0) | groupby(0) %}
+<div class="message {{ category }}">
+  <h3>{{messages_title[category]}}</h3>
+{% for category, msg in msgs %}
+  <p>{{ msg }}</p>
+{% endfor %}
+</div>
+{% endfor %}
+
+{% block content %}{% endblock content %}
+
+<div class="footer">
+  <ul>
+    <li>© 2012 <a href="http://salem.harrache.info">Salem Harrache</a></li>
+    <li>Powered by <a href="http://flask.pocoo.org/">Flask</a></li>
+    <li><a href="/map">Sitemap</a></li>
+    {% if config.UNIVERSITY == "Polytech'Grenoble" %}
+      <li><a href="http://epu.quicker.fr">Polytech'Lyon</a></li>
+    {% elif config.UNIVERSITY == "Polytech'Lyon" %}
+      <li><a href="http://ricm.quicker.fr">Polytech'Grenoble</a></li>
+    {% endif %}
+  </ul>
+</div>
+
+</body>
+</html>
+

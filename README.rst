@@ -1,6 +1,10 @@
 Application web pour l'emploi du temps à Polytech'Grenoble (RICM). J'utilise
 l'application à titre personnel.
 
+.. image:: http://i.imgur.com/JSkwg.jpg
+    :align: center
+
+
 Lien : http://ricm.quicker.fr/
 
 

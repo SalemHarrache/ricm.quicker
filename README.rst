@@ -78,6 +78,7 @@ Pour ce faire on lance la commande : `initdb`
     ./manager.py initdb -c dev
 
 
+
  - -c : configuration ("prod", "dev")
 
 Une fois les données initialisées, on peut lancer le serveur avec la

@@ -64,6 +64,7 @@ def updatecache():
         print url
 
 
+@manager.shell
 def make_shell_context():
     return dict(app=current_app, db=db, Site=Site, Year=Year, Group=Group,
                 Schedule=Schedule, ScheduleGroupIcal=ScheduleGroupIcal,

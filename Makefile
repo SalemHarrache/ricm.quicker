@@ -18,7 +18,7 @@ pep:
 	pep8 website
 
 setup: requirements.txt
-	virtualenv env
+	virtualenv env --python=python2.7
 	./env/bin/pip install -r requirements.txt
 
 upgrade:

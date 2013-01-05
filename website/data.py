@@ -53,9 +53,13 @@ def init_groups():
 def add_schedule(year_name, group_name, site_name, tree_id,
                  schedule_name=None):
     """ Add a schedule """
+    if schedule_name is None:
+        title = u'%s - %s Groupe %s'
+        schedule_name = title % (site_name, year_name.upper(), group_name)
     group = Group.query.filter_by(name=group_name, year_name=year_name).first()
-    db.session.add(Schedule(site_name, group.id, tree_id, schedule_name))
-    db.session.commit()
+    if group is not None:
+        db.session.add(Schedule(site_name, group.id, tree_id, schedule_name))
+        db.session.commit()
 
 
 def init_schedules():

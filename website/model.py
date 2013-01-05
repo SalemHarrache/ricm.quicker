@@ -130,7 +130,7 @@ class Group(db.Model):
 
 class Schedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    schedule_name = db.Column(db.String(255))
+    schedule_name = db.Column(db.String(512))
     site_name = db.Column(db.String(255), db.ForeignKey('site.name'))
     site = db.relationship('Site',
                            backref=db.backref('schedules', lazy='dynamic'))
@@ -165,13 +165,7 @@ class Schedule(db.Model):
 
     @property
     def title(self):
-        if self.schedule_name:
-            return self.schedule_name
-        title = u'%s - %s Groupe %s'
-        year = self.group.year.name.upper()
-        group_name = self.group.name.title()
-        site_name = self.site.name.title()
-        return title % (site_name, year, group_name)
+        return self.schedule_name
 
     def url_img(self, offset):
         url = '%s/imageEt?identifier=%s&projectId=%d&idPianoWee' \

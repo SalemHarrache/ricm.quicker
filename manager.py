@@ -5,16 +5,13 @@
     :license: BSD, see LICENSE for details.
 
 '''
-from gevent import monkey
-
-monkey.patch_all()
-
 import requests
 
 from flask import current_app, url_for
 from flask_script import Manager, prompt_bool
 from werkzeug.contrib.fixers import ProxyFix
 from gevent.wsgi import WSGIServer
+
 from website.model import (Site, Year, Group, Schedule, ScheduleGroupIcal,
                            ScheduleImage)
 from website.app import app, db, configured_app

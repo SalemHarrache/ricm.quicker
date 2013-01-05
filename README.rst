@@ -23,11 +23,11 @@ Installation :
 =============
 
 Tout d'abord il faut installer les dépendances, si ce n'est déjà fait,
-commencer par installer python et virtualenv.
+commencer par installer python et les outils de dev.
 
 ::
 
-    sudo apt-get install python2.7 python-virtualenv
+    sudo apt-get install python2.7 python-dev python-virtualenv libevent-dev
 
 
 Virtualenv permet d'installer les packages python dans un environnement virtuel
@@ -81,7 +81,8 @@ Pour ce faire on lance la commande : `initdb`
 
     ./manager.py initdb -c dev
 
- - -c : configuration ("prod", "dev")
+
+-c : configuration ("prod", "dev")
 
 Une fois les données initialisées, on peut lancer le serveur avec la
 commande : `runserver`

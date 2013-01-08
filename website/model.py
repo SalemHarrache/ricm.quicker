@@ -80,7 +80,7 @@ class Group(db.Model):
 
     @property
     def calendar(self):
-        data = self.reload_calendar()
+        data = self.reload_calendar().decode('utf-8')
         item = ScheduleGroupIcal.query.filter_by(group_id=self.id).first()
         if item:
             if data:

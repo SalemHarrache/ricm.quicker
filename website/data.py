@@ -25,9 +25,9 @@ def init_sites():
 def init_years():
     """Initializes fields data"""
     pretty_field = 'Réseaux Informatiques et Communication Multimédia'
-    db.session.add(Year('ricm3', u'3ème année', pretty_field))
-    db.session.add(Year('ricm4', u'4ème année', pretty_field))
-    db.session.add(Year('ricm5', u'5ème année', pretty_field))
+    db.session.add(Year('ricm3', '3ème année', pretty_field))
+    db.session.add(Year('ricm4', '4ème année', pretty_field))
+    db.session.add(Year('ricm5', '5ème année', pretty_field))
     db.session.commit()
 
 

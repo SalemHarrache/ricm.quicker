@@ -4,14 +4,13 @@
     :license: BSD, see LICENSE for details.
 
 '''
-import uuid
+from __future__ import unicode_literals
 
 
 class DevConfig(object):
     '''Dev configuration.'''
 
     SERVER_PATH = "http://localhost"
-    SECRET_KEY = str(uuid.uuid4())
 
     SQLALCHEMY_ECHO = True
 
@@ -33,8 +32,6 @@ class DevConfig(object):
 
 class ProdConfig(DevConfig):
     '''Dev configuration.'''
-
-    SECRET_KEY = "myscret"
 
     SQLALCHEMY_ECHO = False
 

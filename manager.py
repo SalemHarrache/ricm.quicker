@@ -5,7 +5,10 @@
     :license: BSD, see LICENSE for details.
 
 '''
+from __future__ import unicode_literals
+
 import requests
+
 
 from flask import current_app, url_for
 from flask_script import Manager, prompt_bool
@@ -61,7 +64,7 @@ def updatecache():
                                   app.config['PORT'],
                                   url)
         s.get(url)
-        print url
+        print(url)
 
 
 @manager.shell
@@ -88,11 +91,11 @@ def runserver():
         address = app.config['HOST'], app.config['PORT']
         server = WSGIServer(address, app)
         try:
-            print "Server running on port %s:%d. Ctrl+C to quit" % address
+            print("Server running on port %s:%d. Ctrl+C to quit" % address)
             server.serve_forever()
         except KeyboardInterrupt:
             server.stop()
-    print "\nBye bye"
+    print("\nBye bye")
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ class DevConfig(object):
     '''Dev configuration.'''
 
     SERVER_PATH = "http://localhost"
+    SECRET_KEY = "secret"
 
     SQLALCHEMY_ECHO = True
 
@@ -32,6 +33,8 @@ class DevConfig(object):
 
 class ProdConfig(DevConfig):
     '''Dev configuration.'''
+
+    SECRET_KEY = "myscret"
 
     SQLALCHEMY_ECHO = False
 

@@ -25,9 +25,18 @@ Installation :
 Tout d'abord il faut installer les dépendances, si ce n'est déjà fait,
 commencer par installer python et les outils de dev.
 
+Ubuntu/Debian:
+
 ::
 
     sudo apt-get install python2.7 python-dev python-virtualenv libevent-dev
+
+
+ArchLinux:
+
+::
+
+    sudo pacman -S python2 python-virtualenv libevent
 
 
 Virtualenv permet d'installer les packages python dans un environnement virtuel

@@ -76,7 +76,6 @@ def make_shell_context():
 
 manager.add_option('-c', '--config',
                    dest="config",
-                   required=True,
                    default='dev',
                    choices=('prod', 'dev'))
 

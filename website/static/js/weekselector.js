@@ -20,17 +20,30 @@ $(function () {
       var date = $(this).datepicker('getDate');
       startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
       endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
-      var dateFormat = inst.settings.dateFormat || $.datepicker._defaults.dateFormat;
-      $('#startDate').text($.datepicker.formatDate(dateFormat, startDate, inst.settings));
-      $('#endDate').text($.datepicker.formatDate(dateFormat, endDate, inst.settings));
-
+      
       var today = new Date();
       var weekno = today.getWeek();
       var offset = startDate.getWeek() - weekno;
-      offset = offset - ((startDate.getYear() - today.getYear())*52);
-      window.location = "/schedule/ricm5/reseau/"+offset;
-      
+      //handle year change
+      var yeardiff =  today.getYear() - startDate.getYear();
+      if (yeardiff != 0) {
+        offset = offset - (52*yeardiff);
+      }
+
+			//create new path
+      var pathArray = window.location.pathname.split( '/' );
+      var newPathname = "";
+      for ( i = 0; i<pathArray.length-1; i++ ) {
+	      newPathname += pathArray[i];
+	      newPathname += "/";
+      }
+      if ( isNaN(pathArray[pathArray.length-1]) ){
+	      newPathname += pathArray[pathArray.length-1];
+	      newPathname += "/";
+      }
       selectCurrentWeek();
+      
+      window.location = newPathname+offset;
     },
     beforeShowDay: function (date) {
       var cssClass = '';
@@ -49,10 +62,18 @@ $(function () {
     $(this).find('td a').removeClass('ui-state-hover');
   });
   
+  //offset to date 
+  var pathArray = window.location.pathname.split( '/' );
+  var date = new Date();
+  if (! isNaN(pathArray[pathArray.length-1]) ){
+    var offset = pathArray[pathArray.length-1];
+    date.setDate(date.getDate() + (offset*7));
+  }
+  
+  startDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay());
+  endDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - date.getDay() + 6);
+  $('.week-picker').datepicker( "setDate", date );
   selectCurrentWeek();
 });
 
 
-$(document).ready(function(){
-	
-});

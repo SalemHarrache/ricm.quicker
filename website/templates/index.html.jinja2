@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<div class="week-picker"></div>
 
 {% for order, ordered_schedules in schedules | groupby('order') | sort %}
 {% for schedule in ordered_schedules %}
 <div style="margin-top: 10px;"> {{ schedule.group.previous_link(offset) }} {{ schedule.group.next_link(offset) }}</div>
+<input class="week-picker" type="hidden"/>
 <h2>{{ schedule.title }} (<a href="{{ url_for('.ical', group_name=schedule.group.name, year=schedule.group.year.name) }}">Format iCal</a>)</h2>
 {% if schedule.image %}
 <a href="{{ schedule.auth_url }}"><img style="box-shadow: 0px 0px 6px black;" src="data:image/gif;base64,{{ schedule.image.data }}" alt="{{ schedule.pretty_name(offset) }} - Semaine {{ schedule.week + offset }}"/></a>

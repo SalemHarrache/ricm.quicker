@@ -3,11 +3,10 @@
 {% block title %}{{ title }}{% endblock title %}
 
 {% block content %}
-
-
 {% for order, ordered_schedules in schedules | groupby('order') | sort %}
 {% for schedule in ordered_schedules %}
 <div style="margin-top: 10px;"> {{ schedule.group.previous_link(offset) }} {{ schedule.group.next_link(offset) }}</div>
+<input type="hidden" id="dry_link" name="dry_link" value="{{ schedule.group.dry_link() }}" />
 <input class="week-picker" type="hidden"/>
 <h2>{{ schedule.title }} (<a href="{{ url_for('.ical', group_name=schedule.group.name, year=schedule.group.year.name) }}">Format iCal</a>)</h2>
 {% if schedule.image %}

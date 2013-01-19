@@ -126,6 +126,10 @@ class Group(db.Model):
             href = url_for('.index', year=self.year_name, offset=offset - 1,
                            group_name=self.name)
         return '<a class="nav previous" href="%s"></a>' % href
+    
+    def dry_link(self):
+        href = url_for('.index', year=self.year_name, group_name=self.name)
+        return href
 
 
 class Schedule(db.Model):

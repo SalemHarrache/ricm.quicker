@@ -16,7 +16,7 @@ def init_sites():
     """Initializes sites data"""
     reference_date = datetime(2012, 8, 20)
     db.session.add(Site('Polytech', 'http://ade52-ujf.grenet.fr/ade/', 1124,
-                        15, 'voirPOLYTECH', 'polytech', reference_date, 0))
+                        43, 'voirPOLYTECH', 'polytech', reference_date, 0))
     db.session.add(Site('IMAG', 'http://ade52-ujf.grenet.fr/ade/', 11, 45,
                         'voirIMA', 'ima', reference_date, 1))
     db.session.commit()

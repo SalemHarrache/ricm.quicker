@@ -22,6 +22,7 @@ from .extensions import cache
 def get_identifier(auth_url, host):
     s = requests.session()
     s.get(auth_url, allow_redirects=False)
+    r = s.get('%s/custom/modules/plannings/pianoWeeks.jsp?searchWeeks=all')
     r = s.get('%s/custom/modules/plannings/imagemap.jsp?width=10&he'
               'ight=10' % host, allow_redirects=False)
     try:

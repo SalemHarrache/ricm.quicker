@@ -5,6 +5,7 @@
 
 '''
 from __future__ import division, unicode_literals
+import datetime
 import StringIO
 
 
@@ -78,7 +79,13 @@ def ical(year, group_name):
     strIO = StringIO.StringIO(get_calendar_group(year, group_name))
     strIO.seek(0)
     filename = "%s-group-%s.ics" % (year, group_name)
-    return send_file(strIO, attachment_filename=filename, as_attachment=True)
+    response = send_file(strIO, attachment_filename=filename,
+                         as_attachment=True)
+    response.headers.add('Last-Modified', datetime.datetime.now())
+    response.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate'
+                                          ', post-check=0, pre-check=0')
+    response.headers.add('Pragma', 'no-cache')
+    return response
 
 
 @cache.memoize()
